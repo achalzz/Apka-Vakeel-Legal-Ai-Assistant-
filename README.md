@@ -46,6 +46,29 @@ graph TD
 
 ---
 
+## 📸 Interface Screenshots
+
+Here is a showcase of the beautiful, dark-themed responsive glassmorphic interfaces designed for **Apka Vakeel**:
+
+### 💬 1. AI Legal Workspace
+An advanced, multi-turn AI consultation workspace featuring document uploads, instant simplified counsel, and context-aware citations of IPC, CrPC, and Constitution sections.
+![AI Legal Workspace](./frontend/public/demo/ai-workspace.png)
+
+### ⚖️ 2. Indian Constitution & Rights Explorer
+A custom interface to browse and search the Constitution of India across various categories with AI-translated explanations.
+![Rights Explorer](./frontend/public/demo/rights-explorer.png)
+
+### 📄 3. Intelligent Legal Document Generator
+A step-by-step smart document wizard that generates professional legal notices and agreements using local AI-powered execution.
+![Document Generator](./frontend/public/demo/document-generator.png)
+
+### 📰 4. Live Legal News & SC Rulings
+Real-time legal feeds directly connected to global and national legal news streams with automatic AI failover handling.
+![Live Legal News](./frontend/public/demo/legal-news.png)
+
+---
+
+
 ## 📂 Repository Structure
 
 The codebase is organized in a clean, monorepo-friendly folder structure:
