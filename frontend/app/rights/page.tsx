@@ -644,16 +644,103 @@ function ArticleCard({
                         <Loader2 size={14} className="animate-spin" />
                         AI is analyzing this article…
                       </div>
-                    ) : (
-                      <div>
-                        <p className="text-xs font-semibold text-[var(--accent-cyan)] mb-2 uppercase tracking-wider">
-                          ✨ AI Explanation
-                        </p>
-                        <pre className="whitespace-pre-wrap text-[0.85rem] leading-relaxed text-[var(--text-secondary)] font-sans">
-                          {explanation}
-                        </pre>
-                      </div>
-                    )}
+                    ) : (() => {
+                      let parsed = null;
+                      if (explanation) {
+                        try {
+                          parsed = JSON.parse(explanation);
+                        } catch (e) {
+                          // Not valid JSON
+                        }
+                      }
+
+                      if (parsed) {
+                        return (
+                          <div className="space-y-4">
+                            <div className="flex items-center gap-2">
+                              <Sparkles size={14} className="text-[var(--accent-cyan)] animate-pulse" />
+                              <p className="text-xs font-semibold text-[var(--accent-cyan)] uppercase tracking-wider">
+                                AI Legal Breakdown
+                              </p>
+                            </div>
+                            
+                            <div className="space-y-3.5 text-[0.85rem] leading-relaxed text-[var(--text-secondary)]">
+                              {/* Main Response */}
+                              {parsed.response && (
+                                <div className="text-[0.88rem] whitespace-pre-line text-[var(--text-primary)]">
+                                  {parsed.response}
+                                </div>
+                              )}
+
+                              {/* Simplified English */}
+                              {parsed.simplifiedEnglish && (
+                                <div className="p-3 rounded-xl bg-[rgba(255,255,255,0.02)] border border-[rgba(255,255,255,0.04)]">
+                                  <span className="block text-[0.7rem] font-semibold text-amber-400 uppercase tracking-wider mb-1">
+                                    💡 In Simple Terms
+                                  </span>
+                                  <p className="text-[0.82rem] text-[var(--text-secondary)]">{parsed.simplifiedEnglish}</p>
+                                </div>
+                              )}
+
+                              {/* Hindi Translation */}
+                              {parsed.hindiTranslation && (
+                                <div className="p-3 rounded-xl bg-[rgba(34,211,238,0.02)] border border-[rgba(34,211,238,0.04)]">
+                                  <span className="block text-[0.7rem] font-semibold text-cyan-400 uppercase tracking-wider mb-1">
+                                    🇮🇳 आसान शब्दों में (Hindi / Hinglish)
+                                  </span>
+                                  <p className="text-[0.82rem] text-[var(--text-secondary)] font-sans">{parsed.hindiTranslation}</p>
+                                </div>
+                              )}
+
+                              {/* Citations */}
+                              {parsed.citations && parsed.citations.length > 0 && (
+                                <div>
+                                  <span className="block text-[0.7rem] font-semibold text-[var(--text-muted)] uppercase tracking-wider mb-2">
+                                    🔗 Relevant Laws & Citations
+                                  </span>
+                                  <div className="grid grid-cols-1 gap-1.5">
+                                    {parsed.citations.map((c: any, ci: number) => (
+                                      <div key={ci} className="p-2.5 rounded-lg bg-[rgba(15,25,50,0.3)] border border-[rgba(255,255,255,0.04)] flex flex-col gap-0.5">
+                                        <span className="text-xs font-semibold text-[var(--accent-cyan)]">{c.section}</span>
+                                        <span className="text-[0.78rem] text-[var(--text-muted)]">{c.desc}</span>
+                                      </div>
+                                    ))}
+                                  </div>
+                                </div>
+                              )}
+
+                              {/* Suggested Next Steps */}
+                              {parsed.suggestedNextSteps && parsed.suggestedNextSteps.length > 0 && (
+                                <div>
+                                  <span className="block text-[0.7rem] font-semibold text-[var(--text-muted)] uppercase tracking-wider mb-2">
+                                    📋 Recommended Next Steps
+                                  </span>
+                                  <ul className="space-y-1">
+                                    {parsed.suggestedNextSteps.map((step: string, si: number) => (
+                                      <li key={si} className="flex items-start gap-1.5 text-[0.8rem] text-[var(--text-secondary)]">
+                                        <span className="text-[var(--accent-cyan)] font-bold">✓</span>
+                                        <span>{step}</span>
+                                      </li>
+                                    ))}
+                                  </ul>
+                                </div>
+                              )}
+                            </div>
+                          </div>
+                        );
+                      }
+
+                      return (
+                        <div>
+                          <p className="text-xs font-semibold text-[var(--accent-cyan)] mb-2 uppercase tracking-wider">
+                            ✨ AI Explanation
+                          </p>
+                          <pre className="whitespace-pre-wrap text-[0.85rem] leading-relaxed text-[var(--text-secondary)] font-sans">
+                            {explanation}
+                          </pre>
+                        </div>
+                      );
+                    })()}
                   </div>
                 </motion.div>
               )}
