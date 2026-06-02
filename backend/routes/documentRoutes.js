@@ -18,6 +18,7 @@ const upload = multer({
 
 router.post(
     "/upload",
+    authMiddleware,
     upload.single("document"),
 
     async (req, res) => {

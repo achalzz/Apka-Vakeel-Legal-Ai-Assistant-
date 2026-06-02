@@ -14,7 +14,6 @@ function getGroqClient() {
 
 async function analyzeDocument(fileBuffer) {
     const parser = new PDFParse({ data: fileBuffer });
-    await parser.load();
     const result = await parser.getText();
     const text = result.text;
 

@@ -3,13 +3,14 @@ const router = express.Router();
 
 const prisma = require("../config/prisma");
 const { askLegalAI } = require("../services/aiService");
+const authMiddleware = require("../middleware/auth");
 
 
 // =====================
 // Chat API
 // =====================
 
-router.post("/chat", async (req, res) => {
+router.post("/chat", authMiddleware, async (req, res) => {
 
     try {
 
@@ -116,7 +117,7 @@ router.post("/chat", async (req, res) => {
 // Get chat history
 // =====================
 
-router.get("/history", async (req, res) => {
+router.get("/history", authMiddleware, async (req, res) => {
 
     try {
 
