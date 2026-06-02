@@ -2,6 +2,71 @@
 
 import { motion } from "framer-motion";
 
+function formatAndParseMarkdown(text: string) {
+  if (!text) return null;
+
+  // Pre-process inline asterisks to be newlines
+  // Matches a single asterisk (not part of double asterisks)
+  let processedText = text.replace(/(?<!\*)\*(?!\*)\s+/g, "\n* ");
+  
+  // Also clean up any double newlines + bullet points
+  processedText = processedText.replace(/\n\s*\n\s*\* /g, "\n* ");
+
+  const lines = processedText.split("\n");
+  const listItems: React.ReactNode[] = [];
+  const elements: React.ReactNode[] = [];
+
+  const flushList = (keyIndex: number) => {
+    if (listItems.length > 0) {
+      elements.push(
+        <ul key={`list-${keyIndex}`} className="list-dash list-inside ml-2 mb-3.5 space-y-1.5">
+          {[...listItems]}
+        </ul>
+      );
+      listItems.length = 0;
+    }
+  };
+
+  lines.forEach((line, index) => {
+    const isBullet = line.trim().startsWith("* ") || line.trim().startsWith("- ");
+    let displayLine = line;
+    if (isBullet) {
+      displayLine = line.trim().substring(2);
+    }
+
+    // Parse bold text
+    const parts = displayLine.split(/(\*\*.*?\*\*)/g);
+    const parsedLine = parts.map((part, idx) => {
+      if (part.startsWith("**") && part.endsWith("**")) {
+        return <strong key={idx} className="font-bold text-[var(--accent-cyan)]">{part.slice(2, -2)}</strong>;
+      }
+      return part;
+    });
+
+    if (isBullet) {
+      listItems.push(
+        <li key={`li-${index}`} className="text-[0.88rem] leading-relaxed text-[var(--text-secondary)]">
+          {parsedLine}
+        </li>
+      );
+    } else {
+      flushList(index);
+      if (line.trim() === "") {
+        elements.push(<div key={`space-${index}`} className="h-2" />);
+      } else {
+        elements.push(
+          <p key={`p-${index}`} className="mb-2 text-[0.88rem] leading-relaxed last:mb-0 text-[var(--text-primary)]">
+            {parsedLine}
+          </p>
+        );
+      }
+    }
+  });
+
+  flushList(lines.length);
+  return elements;
+}
+
 interface ChatBubbleProps {
   role: "user" | "assistant";
   content: string;
@@ -36,7 +101,9 @@ export default function ChatBubble({ role, content, index }: ChatBubbleProps) {
             : "glass text-[var(--text-primary)] rounded-bl-md"
         }`}
       >
-        <p className="whitespace-pre-wrap">{content}</p>
+        <div className="space-y-1">
+          {formatAndParseMarkdown(content)}
+        </div>
       </div>
 
       {/* User avatar */}

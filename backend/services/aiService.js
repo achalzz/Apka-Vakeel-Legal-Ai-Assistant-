@@ -44,6 +44,7 @@ You MUST respond with a valid JSON object matching this schema EXACTLY:
 }
 
 Rules:
+- Always structure the "response" field with Markdown: use double newlines (\n\n) to separate different paragraphs and concepts, separate bullet points with newlines and a dash/asterisk (\n- item), and use bolding (**bold**) for key terms to make the layout extremely clean and readable.
 - If isCasual is true: you can leave citations, simplifiedEnglish, hindiTranslation, and suggestedNextSteps as empty arrays/strings.
 - Focus on the Indian Constitution, Indian Penal Code (IPC), Bharatiya Nyaya Sanhita (BNS), CrPC, and other Indian statutes.
 - Do not output any text before or after the JSON payload. Ensure it parses cleanly as a JSON object.`,
