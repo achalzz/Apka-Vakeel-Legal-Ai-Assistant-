@@ -1,4 +1,4 @@
-# ⚖️ Apka Vakeel — AI-Powered Legal Assistant
+#  Apka Vakeel — AI-Powered Legal Assistant
 
 [![Next.js](https://img.shields.io/badge/Next.js-15-black?style=for-the-badge&logo=next.js)](https://nextjs.org/)
 [![Node.js](https://img.shields.io/badge/Node.js-20-green?style=for-the-badge&logo=node.js)](https://nodejs.org/)
@@ -9,7 +9,7 @@
 
 **Apka Vakeel** (meaning *"Your Lawyer"*) is a comprehensive, production-grade legal technology platform designed to make legal consultations, document analysis, and constitutional rights exploration highly accessible. By leveraging advanced conversational legal models (Llama 3.3 70B via Groq) and modern web architectures, the platform bridges the gap between complex legal code and the everyday citizen.
 
-🚀 **Live Demo**: [https://apka-vakeel.netlify.app](https://apka-vakeel.netlify.app)
+ **Live Demo**: [https://apka-vakeel.netlify.app](https://apka-vakeel.netlify.app)
 
 ---
 
@@ -36,40 +36,40 @@ graph TD
 
 ---
 
-## 🌟 Key Features
+##  Key Features
 
-*   🤖 **AI-Powered Legal Consultation**: Multi-turn chat interface providing insights based on Indian law (IPC, CrPC, Constitution) with custom system prompts for conversational legal advice.
-*   📄 **Legal Document Analysis**: Upload contract or agreement PDFs. The engine extracts the text, analyzes clauses, flags high-risk items, suggests defensive modifications, and flags missing protections.
-*   ⚖️ **Rights Explorer & Indian Constitution**: Browse and search constitutional articles by category, sub-category, or keyword with AI-powered plain-language translations and real-world examples.
-*   📰 **Live Legal News Feed**: Real-time legal news updates and Supreme Court rulings fetched directly from Live News API services with secure server-side AI fallback.
-*   🔐 **Secure User Authentication**: Integrated secure user authentication, signup, and user management powered by Clerk.
+*    **AI-Powered Legal Consultation**: Multi-turn chat interface providing insights based on Indian law (IPC, CrPC, Constitution) with custom system prompts for conversational legal advice.
+*    **Legal Document Analysis**: Upload contract or agreement PDFs. The engine extracts the text, analyzes clauses, flags high-risk items, suggests defensive modifications, and flags missing protections.
+*    **Rights Explorer & Indian Constitution**: Browse and search constitutional articles by category, sub-category, or keyword with AI-powered plain-language translations and real-world examples.
+*    **Live Legal News Feed**: Real-time legal news updates and Supreme Court rulings fetched directly from Live News API services with secure server-side AI fallback.
+*    **Secure User Authentication**: Integrated secure user authentication, signup, and user management powered by Clerk.
 
 ---
 
-## 📸 Interface Screenshots
+##  Interface Screenshots
 
 Here is a showcase of the beautiful, dark-themed responsive glassmorphic interfaces designed for **Apka Vakeel**:
 
-### 💬 1. AI Legal Workspace
+###  1. AI Legal Workspace
 An advanced, multi-turn AI consultation workspace featuring document uploads, instant simplified counsel, and context-aware citations of IPC, CrPC, and Constitution sections.
 ![AI Legal Workspace](./frontend/public/demo/ai-workspace.png)
 
-### ⚖️ 2. Indian Constitution & Rights Explorer
+###  2. Indian Constitution & Rights Explorer
 A custom interface to browse and search the Constitution of India across various categories with AI-translated explanations.
 ![Rights Explorer](./frontend/public/demo/rights-explorer.png)
 
-### 📄 3. Intelligent Legal Document Generator
+###  3. Intelligent Legal Document Generator
 A step-by-step smart document wizard that generates professional legal notices and agreements using local AI-powered execution.
 ![Document Generator](./frontend/public/demo/document-generator.png)
 
-### 📰 4. Live Legal News & SC Rulings
+###  4. Live Legal News & SC Rulings
 Real-time legal feeds directly connected to global and national legal news streams with automatic AI failover handling.
 ![Live Legal News](./frontend/public/demo/legal-news.png)
 
 ---
 
 
-## 📂 Repository Structure
+##  Repository Structure
 
 The codebase is organized in a clean, monorepo-friendly folder structure:
 
@@ -131,7 +131,7 @@ NEXT_PUBLIC_CLERK_SIGN_UP_URL=/sign-up
 
 ---
 
-## 🚀 Getting Started
+##  Getting Started
 
 Follow these steps to run a local development instance:
 
@@ -172,7 +172,7 @@ npm run dev
 
 ---
 
-## 🔒 Security Best Practices
+##  Security Best Practices
 
 We enforce strict guidelines to ensure the repository remains secure and production-ready:
 1.  **Zero Secrets Committed**: All secrets are strictly managed in local environments. A root-level `.gitignore` blocks any accidental additions of `.env`, `.env.local`, or build assets.
@@ -181,7 +181,7 @@ We enforce strict guidelines to ensure the repository remains secure and product
 
 ---
 
-## ⚖️ Legal Disclaimer
+##  Legal Disclaimer
 
 > [!WARNING]
 > Apka Vakeel is an **informational AI assistant** built for educational and demonstration purposes. It **does not** constitute licensed legal advice, nor does it create an attorney-client relationship. The information provided by the AI is for guidance only. For any formal legal matters or court filings, always consult with a qualified legal professional in your jurisdiction.
