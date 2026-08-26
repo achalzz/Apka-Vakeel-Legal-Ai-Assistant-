@@ -94,7 +94,7 @@ apka-vakeel/
 
 ---
 
-## ⚙️ Environment Variables Setup
+##  Environment Variables Setup
 
 Both the frontend and backend require local environment variables. Do **not** commit actual `.env` files to git. Use `.env.example` as a template.
 
