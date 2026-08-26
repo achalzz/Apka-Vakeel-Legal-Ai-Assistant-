@@ -13,7 +13,7 @@
 
 ---
 
-## 🏛️ System Architecture
+##  System Architecture
 
 Apka Vakeel is built as a split-stack client-server application optimized for speed, reliability, and security.
 
